@@ -1,0 +1,25 @@
+img{
+    height: 300px;  
+}
+
+.author{
+    margin-bottom: 0px;
+    font-size: 18px;
+    text-align: center;   
+}
+
+.title{
+    
+    margin-top: 7px;
+    margin-bottom: 4px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.desc{
+    margin-bottom: 4px; 
+    text-align: center;
+}
+
+
