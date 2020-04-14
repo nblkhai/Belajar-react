@@ -11,7 +11,8 @@ class AuthScreen extends React.Component{
         repeatPassword : "",
         loginUsername :"",
         loginPassword :"",
-        cond: 0
+        cond: 0,
+        tes:''
     }
     
     render(){
