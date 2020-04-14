@@ -10,6 +10,8 @@ import Brave from './brave.png'
 import Crazy from './crazyRich.png'
 import Educated from './educated.png'
 import Handmaid from './handmaid.png'
+import InputScreen from './view/screen/InputScreen';
+import AuthScreen from './view/screen/AuthScreen'
 
 
 
@@ -80,7 +82,7 @@ import Handmaid from './handmaid.png'
 // }
 // export default App
 
-// function App() {
+function App() {
 //   let arrProduct = [{
 //     nama: "Sepatu Basket",
 //     harga: 2300000,
@@ -156,7 +158,7 @@ import Handmaid from './handmaid.png'
 
 // WEEKEND TASK
 
-function App () {
+// function App () {
   let arrBooks = [
     {
       author: "Margaret Atwood",
@@ -200,19 +202,74 @@ function App () {
     },
   ];
 
-  const bookList = () => {
-    return arrBooks.map(val => {
-      return <div className='col-sm-6'>
-        <WeekendTask productData={val} />
-      </div>
-    })
-  }
+// //   const bookList = () => {
+// //     return arrBooks.map(val => {
+// //       return <div className='col-sm-6'>
+// //         <WeekendTask productData={val} />
+// //       </div>
+// //     })
+// //   }
 
-  return(
-    <div className='App'>
-      <h2>Hello World!</h2>
-      <div className='row'>{bookList()}</div>
+// //   return(
+// //     <div className='App'>
+// //       <h2>Hello World!</h2>
+// //       <div className='row'>{bookList()}</div>
+// //     </div>
+// //   )
+// // }
+// // export default App
+// const bookList = () => {
+//   return arrBooks.map(val => {
+//     return <div>
+//       <CounterScreen productData={val} />
+//     </div>
+//   })
+// }
+
+// return(
+//   <div className='App'>
+//     <h2>Hello World!</h2>
+//     <div>{bookList()}</div>
+//   </div>
+// )
+// }
+// export default App
+
+// const bookList = () => {
+//   return arrBooks.map(val => {
+//     return <div>
+//       <WeekendTask productData={val} />
+//     </div>
+//   })
+// }
+
+// return(
+//   <div className='App'>
+//     <h2>Hello World!</h2>
+//     {/* <div>{bookList()}</div> */}
+//     <InputScreen/>
+//   </div>
+// )
+// }
+// export default App
+
+// Auth Screen 
+const bookList = () => {
+  return arrBooks.map(val => {
+    return <div>
+      <WeekendTask productData={val} />
     </div>
-  )
+  })
+}
+
+return(
+  <div className='App'>
+    {/* <div>{bookList()}</div> */}
+    <AuthScreen/>
+  </div>
+)
 }
 export default App
+
+
+

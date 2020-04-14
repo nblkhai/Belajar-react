@@ -8,7 +8,9 @@ const WeekendTask = (props) => {
     let disc = (price-(price*(discount/100)))
     let hasilDisc = disc.toFixed(2)
     return (
-        <div className="row ml-2" >
+
+        <div className= 'container'>
+            <div className="row ml-2" >
             <div className="col-lg-5 p-5">
                 <img src={image} alt="" />
             </div>
@@ -44,6 +46,7 @@ const WeekendTask = (props) => {
                     }
                 
             </div>
+        </div>
         </div>
                 )
 }

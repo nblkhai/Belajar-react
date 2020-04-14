@@ -39,3 +39,26 @@ import React, { Component } from 'react'
 //     }
 // }
 // export default CounterScreen
+
+
+class CounterScreen extends React.Component{
+   state ={
+       counter: 1,
+       namaku: "bento"
+   }
+   render (){
+       return (
+           <div> 
+               <h1>
+                   {this.state.counter} {this.state.namaku}
+               </h1>
+               <input className="btn btn-primary"
+               type="button"
+               value="Click Me"
+               onclick={() => this.setState({counter : this.state.counter + 1})}
+               />
+           </div>
+       )
+   }
+}
+export default CounterScreen
