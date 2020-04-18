@@ -1,0 +1,50 @@
+{
+  "posts": [],
+  "comments": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "password",
+      "fullName": "Admin Sayang",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "aku",
+      "password": "password",
+      "fullName": "aku Sayang",
+      "role": "aku"
+    },
+    {
+      "username": "aaa",
+      "password": "aaa",
+      "repeatPassword": "aaa",
+      "role": "aaa",
+      "firstname": "aa",
+      "lastname": "aaa",
+      "fullname": "aaaaa",
+      "id": 3
+    },
+    {
+      "username": "asd",
+      "password": "asd",
+      "repeatPassword": "asd",
+      "role": "asd",
+      "firstname": "asd",
+      "lastname": "asd",
+      "fullname": "asdasd",
+      "id": 4
+    },
+    {
+      "username": "nblkhai",
+      "password": "bella",
+      "repeatPassword": "bella",
+      "role": "apaja",
+      "firstname": "Bella",
+      "lastname": "Khairunnisa",
+      "fullname": "BellaKhairunnisa",
+      "id": 5
+    }
+  ]
+}

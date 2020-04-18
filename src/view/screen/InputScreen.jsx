@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class InputScreen extends React.Component{
     
@@ -7,13 +8,14 @@ class InputScreen extends React.Component{
         email: "",
         textbox: "",
     }
+     inputHandler = (e, field) => {
+        this.setState({[field]: e.target.value})
+    }
     
     render(){
         const {username, email, textbox} = this.state
         // e => event
-        const inputHandler = (e, field) => {
-            this.setState({[field]: e.target.value})
-        }
+       
 
         return(
             <div>
@@ -22,12 +24,16 @@ class InputScreen extends React.Component{
                 <h3>Email: {email}</h3>
                 {/* onChange ={(e)=> inputHandler(e)} */}
                 {/* onChange={inputHandler} */}
-                <input onChange ={(e)=> inputHandler(e, "username")} type="text" placeholder="Username"/>
+                <input onChange ={(e)=> this.inputHandler(e, "username")} type="text" placeholder="Username"/>
                 <br />
-                <input onChange ={(e)=> inputHandler(e, "email")} type="text" placeholder="email"/>
+                <input onChange ={(e)=> this.inputHandler(e, "email")} type="text" placeholder="email"/>
+                <Link to={'/profile/'+ username}>
+                <input type="button" value="Login" className="btn btn-primary mt-3"/>
+                </Link>
                 <br/>
-                <textarea onChange ={(e)=> inputHandler(e, "textbox")} cols="30" rows="10"></textarea>
+                <textarea onChange ={(e)=> this.inputHandler(e, "textbox")} cols="30" rows="10"></textarea>
                 <p>{textbox.length}/140</p>
+                
             </div>
         )
     }

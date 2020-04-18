@@ -1,17 +1,29 @@
 import React from 'react';
+import {BrowserRouter,Route,Switch, withRouter} from 'react-router-dom'
+
 import logo from './logo.svg';
 import './App.css';
 import NewScreen from './view/screen/NewScreen';
 import TableProduct from './view/components/TableProduct';
 import CounterScreen from './view/screen/CounterScreen'
 import ProductCard from './view/components/ProductCard'
+
 import WeekendTask from './view/components/WeekendTask'
 import Brave from './brave.png'
 import Crazy from './crazyRich.png'
 import Educated from './educated.png'
 import Handmaid from './handmaid.png'
+
 import InputScreen from './view/screen/InputScreen';
 import AuthScreen from './view/screen/AuthScreen'
+import LifecycleScreen from './view/screen/LifecycleScreen'
+import HomeScreen from './view/screen/HomeScreen'
+import PageNotFound from './view/screen/PageNotFound'
+import Navbar from './view/components/Navbar'
+import ProfileScreen from './view/screen/ProfileScreen'
+import RegisterScreen from './view/screen/RegisterScreen'
+import LoginScreen from './view/screen/LoginScreen'
+
 
 
 
@@ -263,13 +275,36 @@ const bookList = () => {
 }
 
 return(
-  <div className='App'>
+  <>
+   {/* <div className='App'>
     {/* <div>{bookList()}</div> */}
-    <AuthScreen/>
-  </div>
+    {/* <AuthScreen/> */}
+    {/* <LifecycleScreen/> */}  
+  
+  <BrowserRouter>
+
+  {/* LifeCyleScreen akan selalu ada disetiap Path */}
+  {/* <LifecycleScreen/>  */}
+  <Navbar/>
+
+  {/* Switch berfungsi untuk mengecek, dia akan ngecek  satu-satu. Posisi yang ada pada Switch sangat berpengaruh.  */}
+  <Switch>
+    <Route exact path="/home" component={HomeScreen}/>
+    {/* <Route exact path="/auth" component={AuthScreen}/> */}
+    <Route exact path="/register" component={RegisterScreen}/>
+    <Route exact path="/login" component={LoginScreen}/>
+    {/* <Route exact path="/input" component={InputScreen}/> */}
+    {/* <Route exact path="/counter" component={CounterScreen}/> */}
+    <Route exact path="/profile/:username" component={ProfileScreen}/>
+    {/* <Route exact path="/*" component={PageNotFound}/> */}
+
+  </Switch>
+  </BrowserRouter>
+  </>
+  
 )
 }
-export default App
+export default withRouter (App)
 
 
 
