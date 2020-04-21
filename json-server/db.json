@@ -45,6 +45,20 @@
       "lastname": "Khairunnisa",
       "fullname": "BellaKhairunnisa",
       "id": 5
+    },
+    {
+      "username": "abc",
+      "fullName": "abc",
+      "password": "abc",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "username": "abcd",
+      "fullName": "abcd",
+      "password": "abcd",
+      "role": "user",
+      "id": 7
     }
   ]
 }

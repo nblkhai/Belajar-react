@@ -1,32 +1,29 @@
-import React from 'react';
-import {BrowserRouter,Route,Switch, withRouter} from 'react-router-dom'
+import React from "react";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 
-import logo from './logo.svg';
-import './App.css';
-import NewScreen from './view/screen/NewScreen';
-import TableProduct from './view/components/TableProduct';
-import CounterScreen from './view/screen/CounterScreen'
-import ProductCard from './view/components/ProductCard'
+import logo from "./logo.svg";
+import "./App.css";
+import NewScreen from "./view/screen/NewScreen";
+import TableProduct from "./view/components/TableProduct";
+import CounterScreen from "./view/screen/CounterScreen";
+import ProductCard from "./view/components/ProductCard";
 
-import WeekendTask from './view/components/WeekendTask'
-import Brave from './brave.png'
-import Crazy from './crazyRich.png'
-import Educated from './educated.png'
-import Handmaid from './handmaid.png'
+import WeekendTask from "./view/components/WeekendTask";
+import Brave from "./brave.png";
+import Crazy from "./crazyRich.png";
+import Educated from "./educated.png";
+import Handmaid from "./handmaid.png";
 
-import InputScreen from './view/screen/InputScreen';
-import AuthScreen from './view/screen/AuthScreen'
-import LifecycleScreen from './view/screen/LifecycleScreen'
-import HomeScreen from './view/screen/HomeScreen'
-import PageNotFound from './view/screen/PageNotFound'
-import Navbar from './view/components/Navbar'
-import ProfileScreen from './view/screen/ProfileScreen'
-import RegisterScreen from './view/screen/RegisterScreen'
-import LoginScreen from './view/screen/LoginScreen'
-
-
-
-
+import InputScreen from "./view/screen/InputScreen";
+import AuthScreen from "./view/screen/AuthScreen";
+import LifecycleScreen from "./view/screen/LifecycleScreen";
+import HomeScreen from "./view/screen/HomeScreen";
+import PageNotFound from "./view/screen/PageNotFound";
+import Navbar from "./view/components/Navbar";
+import ProfileScreen from "./view/screen/ProfileScreen";
+import RegisterScreen from "./view/screen/RegisterScreen";
+import LoginScreen from "./view/screen/LoginScreen";
+import TodoReduxScreen from "./view/screen/TodoReduxScreen";
 
 // const renderArr = () => {
 //   return arr.map((val) => {
@@ -62,7 +59,7 @@ import LoginScreen from './view/screen/LoginScreen'
 //   let arr = ["Jakarta", "Lampung", "Padang"]
 //   const renderArr = () => {
 //     return arr.map((val) => {
-//       return<CounterScreen kota = {val}/> 
+//       return<CounterScreen kota = {val}/>
 //     }) }
 //   return (
 //     <div className="App">
@@ -95,82 +92,82 @@ import LoginScreen from './view/screen/LoginScreen'
 // export default App
 
 function App() {
-//   let arrProduct = [{
-//     nama: "Sepatu Basket",
-//     harga: 2300000,
-//     desc: "Sepatu basket keluaran terbaru loh! Pake sepatu ini auto menang",
-//     discount: 20,
-//     stock: 10
-//   },
-//   {
-//     nama: "Kaos Polo",
-//     harga: 250000,
-//     desc: "Tingkatkan penampilanmu menggunakan kaos berkelas ini",
-//     discount: 40,
-//     stock: 0
-//   },
-//   {
-//     nama: "Celana Jeans",
-//     harga: 550000,
-//     desc: "Nyaman dan dengan bahan premium gan, stock selalu ready!",
-//     discount: 0,
-//     stock: 10
-//   }]
-//   const renderProduct = () => {
-//     return arrProduct.map((val) => {
-//       return (<ProductCard ProductData={val}/>
-//         )
-//     })
-//   }
-//   return (
-//     <div className="App">
-// {renderProduct()}
-//     </div>
-//   );
+  //   let arrProduct = [{
+  //     nama: "Sepatu Basket",
+  //     harga: 2300000,
+  //     desc: "Sepatu basket keluaran terbaru loh! Pake sepatu ini auto menang",
+  //     discount: 20,
+  //     stock: 10
+  //   },
+  //   {
+  //     nama: "Kaos Polo",
+  //     harga: 250000,
+  //     desc: "Tingkatkan penampilanmu menggunakan kaos berkelas ini",
+  //     discount: 40,
+  //     stock: 0
+  //   },
+  //   {
+  //     nama: "Celana Jeans",
+  //     harga: 550000,
+  //     desc: "Nyaman dan dengan bahan premium gan, stock selalu ready!",
+  //     discount: 0,
+  //     stock: 10
+  //   }]
+  //   const renderProduct = () => {
+  //     return arrProduct.map((val) => {
+  //       return (<ProductCard ProductData={val}/>
+  //         )
+  //     })
+  //   }
+  //   return (
+  //     <div className="App">
+  // {renderProduct()}
+  //     </div>
+  //   );
 
-// let arrProduct = [
-//   {
-//     nama: "Sepatu Basket",
-//     harga: 2300000,
-//     desc: "Sepatu basket keluaran terbaru loh! Pake sepatu ini auto menang",
-//     discount : 20,
-//     stock : 10,
-//   },
-//   {
-//     nama: "Kaos Polo",
-//     harga: 250000,
-//     desc: "Tingkatkan penampilanmu menggunakan kaos berkelas ini",
-//     discount : 40,
-//     stock : 0,
-//   },
-//   {
-//     nama: "Celana Jeans",
-//     harga: 550000,
-//     desc: "Nyaman dan dengan bahan premium gan, stock selalu ready!",
-//     discount : 0,
-//     stock : 5,
-//   },
-// ]
+  // let arrProduct = [
+  //   {
+  //     nama: "Sepatu Basket",
+  //     harga: 2300000,
+  //     desc: "Sepatu basket keluaran terbaru loh! Pake sepatu ini auto menang",
+  //     discount : 20,
+  //     stock : 10,
+  //   },
+  //   {
+  //     nama: "Kaos Polo",
+  //     harga: 250000,
+  //     desc: "Tingkatkan penampilanmu menggunakan kaos berkelas ini",
+  //     discount : 40,
+  //     stock : 0,
+  //   },
+  //   {
+  //     nama: "Celana Jeans",
+  //     harga: 550000,
+  //     desc: "Nyaman dan dengan bahan premium gan, stock selalu ready!",
+  //     discount : 0,
+  //     stock : 5,
+  //   },
+  // ]
 
-// const daftarProduk = () => {
-//   return arrProduct.map((val) => {
-//     return(
-//       <ProductCard productData={val}/>
-//     )
-//   })
-// }
+  // const daftarProduk = () => {
+  //   return arrProduct.map((val) => {
+  //     return(
+  //       <ProductCard productData={val}/>
+  //     )
+  //   })
+  // }
 
-// return (
-//   <div className="App">
-//     {daftarProduk()}
-//   </div>
-// )
-// }
-// export default App
+  // return (
+  //   <div className="App">
+  //     {daftarProduk()}
+  //   </div>
+  // )
+  // }
+  // export default App
 
-// WEEKEND TASK
+  // WEEKEND TASK
 
-// function App () {
+  // function App () {
   let arrBooks = [
     {
       author: "Margaret Atwood",
@@ -214,97 +211,94 @@ function App() {
     },
   ];
 
-// //   const bookList = () => {
-// //     return arrBooks.map(val => {
-// //       return <div className='col-sm-6'>
-// //         <WeekendTask productData={val} />
-// //       </div>
-// //     })
-// //   }
+  // //   const bookList = () => {
+  // //     return arrBooks.map(val => {
+  // //       return <div className='col-sm-6'>
+  // //         <WeekendTask productData={val} />
+  // //       </div>
+  // //     })
+  // //   }
 
-// //   return(
-// //     <div className='App'>
-// //       <h2>Hello World!</h2>
-// //       <div className='row'>{bookList()}</div>
-// //     </div>
-// //   )
-// // }
-// // export default App
-// const bookList = () => {
-//   return arrBooks.map(val => {
-//     return <div>
-//       <CounterScreen productData={val} />
-//     </div>
-//   })
-// }
+  // //   return(
+  // //     <div className='App'>
+  // //       <h2>Hello World!</h2>
+  // //       <div className='row'>{bookList()}</div>
+  // //     </div>
+  // //   )
+  // // }
+  // // export default App
+  // const bookList = () => {
+  //   return arrBooks.map(val => {
+  //     return <div>
+  //       <CounterScreen productData={val} />
+  //     </div>
+  //   })
+  // }
 
-// return(
-//   <div className='App'>
-//     <h2>Hello World!</h2>
-//     <div>{bookList()}</div>
-//   </div>
-// )
-// }
-// export default App
+  // return(
+  //   <div className='App'>
+  //     <h2>Hello World!</h2>
+  //     <div>{bookList()}</div>
+  //   </div>
+  // )
+  // }
+  // export default App
 
-// const bookList = () => {
-//   return arrBooks.map(val => {
-//     return <div>
-//       <WeekendTask productData={val} />
-//     </div>
-//   })
-// }
+  // const bookList = () => {
+  //   return arrBooks.map(val => {
+  //     return <div>
+  //       <WeekendTask productData={val} />
+  //     </div>
+  //   })
+  // }
 
-// return(
-//   <div className='App'>
-//     <h2>Hello World!</h2>
-//     {/* <div>{bookList()}</div> */}
-//     <InputScreen/>
-//   </div>
-// )
-// }
-// export default App
+  // return(
+  //   <div className='App'>
+  //     <h2>Hello World!</h2>
+  //     {/* <div>{bookList()}</div> */}
+  //     <InputScreen/>
+  //   </div>
+  // )
+  // }
+  // export default App
 
-// Auth Screen 
-const bookList = () => {
-  return arrBooks.map(val => {
-    return <div>
-      <WeekendTask productData={val} />
-    </div>
-  })
-}
+  // Auth Screen
+  const bookList = () => {
+    return arrBooks.map((val) => {
+      return (
+        <div>
+          <WeekendTask productData={val} />
+        </div>
+      );
+    });
+  };
 
-return(
-  <>
-   {/* <div className='App'>
+  return (
+    <>
+      {/* <div className='App'>
     {/* <div>{bookList()}</div> */}
-    {/* <AuthScreen/> */}
-    {/* <LifecycleScreen/> */}  
-  
-  <BrowserRouter>
+      {/* <AuthScreen/> */}
+      {/* <LifecycleScreen/> */}
 
-  {/* LifeCyleScreen akan selalu ada disetiap Path */}
-  {/* <LifecycleScreen/>  */}
-  <Navbar/>
+      <BrowserRouter>
+        {/* LifeCyleScreen akan selalu ada disetiap Path */}
+        {/* <LifecycleScreen/>  */}
+        <Navbar />
 
-  {/* Switch berfungsi untuk mengecek, dia akan ngecek  satu-satu. Posisi yang ada pada Switch sangat berpengaruh.  */}
-  <Switch>
-    <Route exact path="/home" component={HomeScreen}/>
-    {/* <Route exact path="/auth" component={AuthScreen}/> */}
-    <Route exact path="/register" component={RegisterScreen}/>
-    <Route exact path="/login" component={LoginScreen}/>
-    {/* <Route exact path="/input" component={InputScreen}/> */}
-    {/* <Route exact path="/counter" component={CounterScreen}/> */}
-    <Route exact path="/profile/:username" component={ProfileScreen}/>
-    {/* <Route exact path="/*" component={PageNotFound}/> */}
-
-  </Switch>
-  </BrowserRouter>
-  </>
-  
-)
+        {/* Switch berfungsi untuk mengecek, dia akan ngecek  satu-satu. Posisi yang ada pada Switch sangat berpengaruh.  */}
+        <Switch>
+          <Route exact path="/home" component={HomeScreen} />
+          {/* <Route exact path="/auth" component={AuthScreen}/> */}
+          <Route exact path="/register" component={RegisterScreen} />
+          <Route exact path="/login" component={LoginScreen} />
+          {/* <Route exact path="/input" component={InputScreen}/> */}
+          {/* <Route exact path="/counter" component={CounterScreen}/> */}
+          <Route exact path="/profile/:username" component={ProfileScreen} />
+          {/* <Route exact path="/todo" component={TodoReduxScreen}/> */}
+          {/* <Route exact path="/*" component={PageNotFound}/> */}
+        </Switch>
+      </BrowserRouter>
+    </>
+  );
 }
-export default withRouter (App)
-
-
-
+export default withRouter(App);
