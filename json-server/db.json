@@ -66,6 +66,41 @@
       "password": "123",
       "role": "user",
       "id": 8
+    },
+    {
+      "username": "1234",
+      "password": "1234",
+      "fullName": "1234",
+      "role": "user",
+      "id": 9
+    },
+    {
+      "username": "sylvi",
+      "password": "1234",
+      "fullName": "slipi",
+      "role": "user",
+      "id": 10
+    },
+    {
+      "username": "iga",
+      "password": "1234",
+      "fullName": "igaa",
+      "role": "user",
+      "id": 11
+    },
+    {
+      "username": "7890",
+      "password": "7890",
+      "fullName": "7890",
+      "role": "user",
+      "id": 12
+    },
+    {
+      "username": "aldy",
+      "password": "1234",
+      "fullName": "Aldy Aulia Andrat",
+      "role": "user",
+      "id": 13
     }
   ]
 }

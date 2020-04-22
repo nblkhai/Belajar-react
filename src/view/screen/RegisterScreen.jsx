@@ -4,6 +4,8 @@ import { API_URL } from "../../constants/API";
 import { Link, Redirect } from "react-router-dom";
 import swal from "sweetalert";
 import { Button, Spinner } from "reactstrap";
+import { registerHandler } from "../../redux/actions";
+import { connect } from "react-redux";
 
 // class RegisterScreen extends React.Component {
 //   state = {
@@ -190,45 +192,14 @@ class RegisterScreen extends Component {
     // 4. Jika case 2.3 alert username invalid
 
     const { username, password, repPassword, fullName } = this.state;
-    let newUser = {
+    const userData = {
       username,
       fullName,
       password,
+      repPassword,
       role: "user",
     };
-
-    this.setState({ isLoading: true });
-    setTimeout(() => {
-      Axios.get(`${API_URL}/users`, {
-        params: {
-          username,
-        },
-      })
-        .then((res) => {
-          if (res.data.length == 0) {
-            // Username belum terpakai
-            // POST request here
-            Axios.post(`${API_URL}/users`, newUser)
-              .then((res) => {
-                alert("Akun anda telah terdaftar!");
-                this.setState({ isLoading: false });
-              })
-              .catch((err) => {
-                alert("Terjadi kesalahan di server, mon map");
-                this.setState({ isLoading: false });
-              });
-          } else {
-            // Username sudah terpakai
-            // alert here
-            alert("Username: " + username + " sudah terpakai");
-            this.setState({ isLoading: false });
-          }
-        })
-        .catch((err) => {
-          console.log("ERROR", err);
-          this.setState({ isLoading: false });
-        });
-    }, 1500);
+    this.props.onRegister(userData);
   };
 
   render() {
@@ -272,5 +243,13 @@ class RegisterScreen extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
-export default RegisterScreen;
+const mapDispatchToProps = {
+  onRegister: registerHandler,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
