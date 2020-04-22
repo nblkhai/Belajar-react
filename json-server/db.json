@@ -59,6 +59,13 @@
       "password": "abcd",
       "role": "user",
       "id": 7
+    },
+    {
+      "username": "bella",
+      "fullName": "bellakh",
+      "password": "123",
+      "role": "user",
+      "id": 8
     }
   ]
 }

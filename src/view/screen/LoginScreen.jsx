@@ -3,95 +3,136 @@ import Axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { API_URL } from "../../constants/API";
 import swal from "sweetalert";
-import { usernameInputHandler } from "../../redux/actions";
+import { loginHandler } from "../../redux/actions";
 import { connect } from "react-redux";
 
-class LoginScreen extends React.Component {
+// class LoginScreen extends React.Component {
+//   state = {
+//     arrUsers: [],
+//     loginUsername: "",
+//     loginPassword: "",
+//     currentUsername: "",
+//     isLoggedin: false,
+//   };
+
+//   inputHandler = (e, field) => {
+//     this.setState({ [field]: e.target.value });
+//   };
+
+//   loginHandler = () => {
+//     const { loginUsername, loginPassword } = this.state;
+//   }
+//   render() {
+//     const {
+//       isLoggedIn,
+//       currentUsername,
+//       loginPassword,
+//       loginUsername,
+//     } = this.state;
+
+//     if (!isLoggedIn) {
+//       return (
+//         <div>
+//           <center>
+//             <div className="card p-5" style={{ width: "400px" }}>
+//               <h4>Login</h4>
+//               <input
+//                 value={loginUsername}
+//                 className="form-control mt-2"
+//                 type="text"
+//                 placeholder="Username"
+//                 onChange={(e) => this.inputHandler(e, "loginUsername")}
+//               />
+//               <input
+//                 value={loginPassword}
+//                 className="form-control mt-2"
+//                 type="text"
+//                 placeholder="Password"
+//                 onChange={(e) => this.inputHandler(e, "loginPassword")}
+//               />
+//               <input
+//                 type="button"
+//                 value="Login"
+//                 className="btn btn-primary mt-3"
+//                 onClick={this.loginHandler}
+//               />
+//             </div>
+//           </center>
+//         </div>
+//       );
+//     } else {
+//       return <Redirect to={`/Profile/${currentUsername}`} />;
+//     }
+//   }
+// }
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user,
+//   };
+// };
+
+// const mapDispatchToProps = {
+//   onLogin: loginHandler,
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+
+// export default LoginScreen
+
+// Punya Abangnya
+
+class LoginScreen extends Component {
   state = {
-    arrUsers: [],
-    loginUsername: "",
-    loginPassword: "",
-    currentUsername: "",
-    isLoggedin: false,
+    username: "",
+    password: "",
+    isLoggedIn: false,
+    loginProfile: {},
   };
 
-  inputHandler = (e, field) => {
-    this.setState({ [field]: e.target.value });
+  inputHandler = (event, field) => {
+    const { value } = event.target;
+    this.setState({ [field]: value });
   };
 
   loginHandler = () => {
-    const { loginUsername, loginPassword } = this.state;
+    const { username, password } = this.state;
 
-    Axios.get(`${API_URL}/users`, {
-      params: {
-        username: loginUsername,
-        password: loginPassword,
-      },
-    })
-      .then((res) => {
-        for (let i = 0; i < res.data.length; i++) {
-          if (
-            res.data[i].username == loginUsername &&
-            res.data[i].password == loginPassword
-          ) {
-            this.props.onChangeUsername(loginUsername);
-            this.setState({
-              isLoggedIn: true,
-              currentUsername: res.data[i].username,
-              loginUsername: "",
-              loginPassword: "",
-            });
-          } else if (i == res.data.length - 1) {
-            swal("Error!", "Username atau password salah", "error");
-          }
-        }
-      })
-
-      .catch((err) => {
-        swal("Error!", "Username atau password salah", "error");
-      });
+    const userData = {
+      username,
+      password,
+    };
+    this.props.onLogin(userData);
   };
 
   render() {
-    const {
-      isLoggedIn,
-      currentUsername,
-      loginPassword,
-      loginUsername,
-    } = this.state;
-
-    if (!isLoggedIn) {
+    if (!this.state.isLoggedIn) {
       return (
-        <div>
-          <center>
-            <div className="card p-5" style={{ width: "400px" }}>
-              <h4>Login</h4>
-              <input
-                value={loginUsername}
-                className="form-control mt-2"
-                type="text"
-                placeholder="Username"
-                onChange={(e) => this.inputHandler(e, "loginUsername")}
-              />
-              <input
-                value={loginPassword}
-                className="form-control mt-2"
-                type="text"
-                placeholder="Password"
-                onChange={(e) => this.inputHandler(e, "loginPassword")}
-              />
-              <input
-                type="button"
-                value="Login"
-                className="btn btn-primary mt-3"
-                onClick={this.loginHandler}
-              />
-            </div>
-          </center>
+        <div className="container d-flex justify-content-center">
+          <div className="card p-5" style={{ width: "400px" }}>
+            <h4>Login</h4>
+            <p>Username: {this.props.user.username}</p>
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Username"
+              onChange={(e) => this.inputHandler(e, "username")}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Password"
+              onChange={(e) => this.inputHandler(e, "password")}
+            />
+            <input
+              type="button"
+              value="Login"
+              className="btn btn-primary mt-3"
+              onClick={this.loginHandler}
+            />
+          </div>
         </div>
       );
     } else {
-      return <Redirect to={`/Profile/${currentUsername}`} />;
+      return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
     }
   }
 }
@@ -102,81 +143,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onChangeUsername: usernameInputHandler,
+  onLogin: loginHandler,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
-
-// export default LoginScreen
-
-// Punya Abangnya
-
-// class LoginScreen extends Component {
-//     state = {
-//       username: "",
-//       password: "",
-//       isLoggedIn: false,
-//       loginProfile: {},
-//     };
-
-//     inputHandler = (event, field) => {
-//       const { value } = event.target;
-//       this.setState({ [field]: value });
-//     };
-
-//     loginHandler = () => {
-//       const { username, password } = this.state;
-
-//       Axios.get(`${API_URL}/users`, {
-//         params: {
-//           username,
-//           password,
-//         },
-//       })
-//         .then((res) => {
-//           // Login sukses
-//           if (res.data.length > 0) {
-//             swal("Success!", "Berhasil berhasil hore", "success");
-//             this.setState({ isLoggedIn: true, loginProfile: res.data[0] });
-//           } else {
-//             swal("Error!", "Username atau password salah", "error");
-//           }
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     };
-
-//     render() {
-//       if (!this.state.isLoggedIn) {
-//         return (
-//           <div className="container d-flex justify-content-center">
-//             <div className="card p-5" style={{ width: "400px" }}>
-//               <h4>Login</h4>
-//               <input
-//                 className="form-control mt-2"
-//                 type="text"
-//                 placeholder="Username"
-//                 onChange={(e) => this.inputHandler(e, "username")}
-//               />
-//               <input
-//                 className="form-control mt-2"
-//                 type="text"
-//                 placeholder="Password"
-//                 onChange={(e) => this.inputHandler(e, "password")}
-//               />
-//               <input
-//                 type="button"
-//                 value="Login"
-//                 className="btn btn-primary mt-3"
-//                 onClick={this.loginHandler}
-//               />
-//             </div>
-//           </div>
-//         );
-//       } else {
-//         return <Redirect to={`/profile/${this.state.loginProfile.id}`} />;
-//       }
-//     }
-//   }
-
-//   export default LoginScreen;

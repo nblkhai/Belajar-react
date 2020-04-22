@@ -17,7 +17,7 @@ import user from "./user";
 export default combineReducers(
   // Object ini diakses oleh parameter (state) di mapStateToProps
   {
-    haha: todo,
+    todo: todo,
     user,
   }
 );
