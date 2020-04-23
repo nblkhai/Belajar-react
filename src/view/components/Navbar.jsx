@@ -11,6 +11,7 @@ class Navbar extends React.Component {
       >
         <Link to="/register">Register</Link>
         <Link to="/login">Login</Link>
+
         {/* <Link to="/input">Input Screen </Link> */}
         {/* <Link to="/todo"> Todo Input </Link> */}
         <p>Hello {this.props.user.username}</p>

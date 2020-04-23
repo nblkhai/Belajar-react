@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import Cookie from "universal-cookie";
+import { connect } from "react-redux";
+import { userKeepLogin } from "./redux/actions";
 
 import logo from "./logo.svg";
 import "./App.css";
@@ -304,6 +306,7 @@ import TodoReduxScreen from "./view/screen/TodoReduxScreen";
 // }
 // export default withRouter(App);
 
+// cookieobjcet berfungsi untuk menyimpan data user
 const cookieObject = new Cookie();
 
 class App extends React.Component {
@@ -354,6 +357,13 @@ class App extends React.Component {
       return <WeekendTask book={val} />;
     });
   };
+  componentDidMount() {
+    let cookieResult = cookieObject.get("authData");
+    console.log(cookieResult);
+    if (cookieResult) {
+      this.props.userKeepLogin(cookieResult);
+    }
+  }
 
   render() {
     return (
@@ -374,4 +384,14 @@ class App extends React.Component {
     );
   }
 }
-export default withRouter(App);
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+const mapDispatchToProps = {
+  userKeepLogin,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

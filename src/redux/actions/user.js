@@ -86,3 +86,31 @@ export const registerHandler = (userData) => {
       });
   };
 };
+
+export const userKeepLogin = (userData) => {
+  return (dispatch) => {
+    Axios.get(`${API_URL}/users`, {
+      params: {
+        id: userData.id,
+      },
+    })
+      .then((res) => {
+        if (res.data.length > 0) {
+          dispatch({
+            type: "ON_LOGIN_SUCCESS",
+            payload: res.data[0],
+          });
+        } else {
+          dispatch({
+            type: "ON_LOGIN_FAIL",
+            payload: "Username / Password Salah!",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const logoutHandler = () => {};
