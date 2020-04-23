@@ -113,4 +113,9 @@ export const userKeepLogin = (userData) => {
   };
 };
 
-export const logoutHandler = () => {};
+export const logoutHandler = (userData) => {
+  return {
+    type: "ON_CHANGE_LOGOUT",
+    payload: userData,
+  };
+};
